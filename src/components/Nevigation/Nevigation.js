@@ -11,9 +11,11 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { Link } from '@mui/material';
+import { Link, useLocation } from 'react-router-dom';
+
 
 const Nevigation = () => {
+    
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -72,22 +74,31 @@ const Nevigation = () => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
+                            <Link style={{ textDecoration: 'none' }} to='/'>
+                                <Button
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: '#0091ea', display: 'block' }}
+                                >
+                                    Home
+                                </Button>
+                            </Link>
 
-                            <Button
-                                href='/ko'
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: '#0091ea', display: 'block' }}
-                            >
-                                Home
-                            </Button>
-                            
-                            <Button
-                                href='/ko2'
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: '#0091ea', display: 'block' }}
-                            >
-                                Home 2
-                            </Button>
+                            <Link style={{ textDecoration: 'none' }} to='/signin'>
+                                <Button
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: '#0091ea', display: 'block' }}
+                                >
+                                    Sign In
+                                </Button>
+                            </Link>
+                            <Link style={{ textDecoration: 'none' }} to='/signup'>
+                                <Button
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: '#0091ea', display: 'block' }}
+                                >
+                                    Sign Up
+                                </Button>
+                            </Link>
 
                         </Menu>
                     </Box>
@@ -101,21 +112,31 @@ const Nevigation = () => {
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 
                         
+                        <Link style={{ textDecoration: 'none' }} to='/'>
                             <Button
-                                href='/ko'
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 Home
                             </Button>
+                        </Link>
                         
+                        <Link style={{ textDecoration: 'none' }} to='/signin'>
                             <Button
-                                href='/ko2'
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                Home 3
+                                Sign In
                             </Button>
+                        </Link>
+                        <Link style={{textDecoration:'none'}} to='/signup'>
+                            <Button
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                Sign Up
+                            </Button>
+                        </Link>
                        
 
                     </Box>
