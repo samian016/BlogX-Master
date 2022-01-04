@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, sendEmailVerification, sendPasswordResetEmail, onAuthStateChanged } from "firebase/auth";
 import initializationAuth from '../firebase/firebase.initialize';
-import { useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 initializationAuth();
 const useFirebase = () => {
 
@@ -10,9 +10,9 @@ const useFirebase = () => {
     const [message, setMessage] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [admin, setAdmin] = useState(false);
-    
+
     const history = useHistory();
-    
+
 
     const auth = getAuth();
     const setNewUserName = (name, image) => {
@@ -45,7 +45,7 @@ const useFirebase = () => {
                 setIsLoading(false)
             });
     }
-    const createUsingEmail = (email, password, name, image,url) => {
+    const createUsingEmail = (email, password, name, image, url) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 setNewUserName(name, image);
@@ -59,7 +59,7 @@ const useFirebase = () => {
                 setIsLoading(false)
             });
     }
-    const signUsingEmail = (email, password,url) => {
+    const signUsingEmail = (email, password, url) => {
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 verification();

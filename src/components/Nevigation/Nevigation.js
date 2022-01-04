@@ -12,10 +12,12 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link, useLocation } from 'react-router-dom';
-
+import useAuth from '../../useFirebase/hooks/useAuth';
 
 const Nevigation = () => {
-    
+
+    const { logOut, user } = useAuth();
+
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -111,7 +113,7 @@ const Nevigation = () => {
                     >BlogX-Master.</Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 
-                        
+
                         <Link style={{ textDecoration: 'none' }} to='/'>
                             <Button
                                 onClick={handleCloseNavMenu}
@@ -120,7 +122,7 @@ const Nevigation = () => {
                                 Home
                             </Button>
                         </Link>
-                        
+
                         <Link style={{ textDecoration: 'none' }} to='/signin'>
                             <Button
                                 onClick={handleCloseNavMenu}
@@ -129,7 +131,7 @@ const Nevigation = () => {
                                 Sign In
                             </Button>
                         </Link>
-                        <Link style={{textDecoration:'none'}} to='/signup'>
+                        <Link style={{ textDecoration: 'none' }} to='/signup'>
                             <Button
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
@@ -137,7 +139,7 @@ const Nevigation = () => {
                                 Sign Up
                             </Button>
                         </Link>
-                       
+
 
                     </Box>
 
@@ -164,7 +166,7 @@ const Nevigation = () => {
                             onClose={handleCloseUserMenu}
                         >
 
-                            <MenuItem onClick={handleCloseNavMenu}>
+                            <MenuItem onClick={handleCloseUserMenu}>
                                 <Typography textAlign="center">Dashboard</Typography>
                             </MenuItem>
 
