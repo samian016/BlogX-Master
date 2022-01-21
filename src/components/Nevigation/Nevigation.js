@@ -16,7 +16,7 @@ import useAuth from '../../useFirebase/hooks/useAuth';
 
 const Nevigation = () => {
 
-    const { logOut, user } = useAuth();
+    const { logOut, user, isLogged } = useAuth();
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -35,6 +35,12 @@ const Nevigation = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const logout = () => {
+        handleCloseUserMenu();
+        logOut();
+    }
+
     return (
         <AppBar style={{ background: "#40bf46" }} position="static">
             <Container maxWidth="xl">
@@ -119,7 +125,7 @@ const Nevigation = () => {
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                Home
+                                h0 Home
                             </Button>
                         </Link>
 
@@ -139,11 +145,9 @@ const Nevigation = () => {
                                 Sign Up
                             </Button>
                         </Link>
-
-
                     </Box>
 
-                    <Box sx={{ flexGrow: 0 }}>
+                    {isLogged && <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -170,8 +174,12 @@ const Nevigation = () => {
                                 <Typography textAlign="center">Dashboard</Typography>
                             </MenuItem>
 
+                            <MenuItem onClick={logout}>
+                                <Typography textAlign="center">Log Out</Typography>
+                            </MenuItem>
+
                         </Menu>
-                    </Box>
+                    </Box>}
                 </Toolbar>
             </Container>
         </AppBar>

@@ -4,11 +4,11 @@ import { Route } from 'react-router-dom';
 import useAuth from '../../useFirebase/hooks/useAuth';
 
 const UserRoute = ({ children, ...rest }) => {
-    const { user } = useAuth();
+    const { user, isLogged } = useAuth();
     return (
         <Route {...rest}
             render={({ location }) =>
-                !user.email ? children : <Redirect
+                (!isLogged && !user.email) ? children : <Redirect
                     to={{
                         pathname: "/",
                         state: { from: location }
